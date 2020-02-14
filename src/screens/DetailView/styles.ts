@@ -32,6 +32,21 @@ const styles: any = StyleSheet.create({
     right: 10,
     flexDirection: 'row',
   },
+  detailViewText: {
+    position: 'absolute',
+    bottom: 20,
+    left: 30,
+  },
+  authorText: {
+    color: '#fff',
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+  cameraText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
   detailViewImage: {
     width: 50,
     height: 50,

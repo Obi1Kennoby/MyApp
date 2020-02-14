@@ -33,13 +33,12 @@ class HomeContainer extends React.Component<Props, State> {
     this.onRefresh();
   }
 
-  async onRefresh(): void {
-    await this.props.fetchPictures(1);
-    console.trace('props', this.props.pictures)
+  async onRefresh() {
+    await this.props.fetchPictures(true);
   }
 
-  onLoadNext(): void {
-    // TODO: implement me
+  async onLoadNext() {
+    await this.props.fetchPictures(false);
   }
 
   render() {
@@ -55,7 +54,7 @@ class HomeContainer extends React.Component<Props, State> {
 
 function bindAction(dispatch) {
   return {
-    fetchPictures: page => dispatch(fetchPictures(page)),
+    fetchPictures: reset => dispatch(fetchPictures(reset)),
   };
 }
 

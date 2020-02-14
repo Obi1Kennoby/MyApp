@@ -3,13 +3,12 @@ import {View, Image} from 'react-native';
 
 import styles from './styles';
 import DetailsFooter from './components/DetailsFooter';
+import {PictureDetails} from "../../containers/DetailViewContainer/reducer";
 
 interface Props {
   imageUrl: string;
   isLoading: boolean;
-  shareCallback: Function;
-  applyFilterCallback: Function;
-  pictureDetails: Object;
+  pictureDetails: PictureDetails
 };
 
 // TODO: it would be great to see here loader, pinch to zoom here and pan
@@ -23,7 +22,8 @@ class DetailView extends React.PureComponent<Props> {
       pictureDetails,
     } = this.props;
 
-    const imageUrl = pictureDetails.cropped_picture
+    console.trace("DETAIIL", pictureDetails)
+    const imageUrl = pictureDetails.full_picture || pictureDetails.cropped_picture
 
     return (
       <View style={styles.container}>

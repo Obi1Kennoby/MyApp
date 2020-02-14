@@ -4,7 +4,7 @@ import {AsyncStorage} from "react-native";
 const API_KEY = '23567b218376f79d9415'; // other valid API keys: '760b5fb497225856222a', '0e2a751704a65685eefc'
 const API_ENDPOINT = 'http://195.39.233.28:8035';
 
-let token = null
+let token: string | undefined;
 
 async function auth() {
   const response = await fetch(`${API_ENDPOINT}/auth`, {
@@ -15,43 +15,48 @@ async function auth() {
 
   if (response.ok) {
     const json = await response.json();
-    return json.token;
+    token = json.token;
+    return token;
   }
 }
 
-function getAuthHeader(): string {
+function shouldRefreshToken(response) {
+  return response.status === 401;
+}
+
+function getAuthHeader() {
   const headers = {
     'Content-Type': 'application/json',
     Authorization: null,
   };
 
-  console.trace('header token', token)
-  if (token) {
+  if (token != null) {
     headers.Authorization = 'Bearer ' + token;
   }
   return headers;
 }
 
 async function query(url: string, parameters) {
-  if (token === null) {
-    token = await auth()
-    console.trace('set token')
+  if (token == null) {
+    await auth();
   }
-  const response = await fetch(url, parameters);
+  const response = await fetch(url, { ...parameters,  headers: getAuthHeader()});
   if (response.ok) {
     return response;
+  } else if (shouldRefreshToken(response)) {
+    await auth();
+    return query(url, { ...parameters,  headers: getAuthHeader()});
   }
-  console.trace('query error');
 }
 
-export async function getPictures(page: number = 1): any[] {
+export async function getPictures(page: number = 1) {
   return query(`${API_ENDPOINT}/images?page=${page}`, {
     method: 'GET',
     headers: getAuthHeader(),
   });
 }
 
-export async function getPictureDetails(id: number): any {
+export async function getPictureDetails(id: number) {
   return query(`${API_ENDPOINT}/images/${id}`, {
     method: 'GET',
     headers: getAuthHeader(),
