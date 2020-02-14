@@ -29,5 +29,6 @@ export function fetchListFailed(errorMessage: string): ActionWithPayload {
 export function fetchPictures(page: number = 1) {
   return async dispatch => {
     // TODO: implement me
+    getPictures();
   };
 }

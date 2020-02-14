@@ -13,6 +13,17 @@ import Home from './containers/HomeContainer/index';
 import {createAppContainer} from 'react-navigation';
 import DetailView from './containers/DetailViewContainer/index';
 
+import Reactotron from 'reactotron-react-native';
+
+if (__DEV__) {
+  // tslint:disable-next-line
+  console.trace = Reactotron.log;
+
+  Reactotron.configure() // controls connection & communication settings
+    .useReactNative({}) // add all built-in react native plugins
+    .connect(); // let's connect!
+}
+
 const Navigation = createAppContainer(
   createStackNavigator(
     {
