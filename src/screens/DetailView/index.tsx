@@ -4,7 +4,7 @@ import {View, Image} from 'react-native';
 import styles from './styles';
 import DetailsFooter from './components/DetailsFooter';
 
-type Props = {
+interface Props {
   imageUrl: string;
   isLoading: boolean;
   shareCallback: Function;
