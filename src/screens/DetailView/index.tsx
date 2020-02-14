@@ -1,4 +1,3 @@
-// @flow
 import * as React from 'react';
 import {View, Image} from 'react-native';
 
@@ -18,16 +17,18 @@ type Props = {
 class DetailView extends React.PureComponent<Props> {
   render() {
     const {
-      imageUrl,
       isLoading,
       shareCallback,
       applyFilterCallback,
       pictureDetails,
     } = this.props;
+
+    const imageUrl = pictureDetails.cropped_picture
+
     return (
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image source={{uri: imageUrl}} style={styles.imageStyle} />
+          <Image source={{uri: imageUrl}} style={styles.imageStyle} resizeMode={'contain'} />
         </View>
         <DetailsFooter
           pictureDetails={pictureDetails}

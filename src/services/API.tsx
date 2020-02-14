@@ -4,7 +4,6 @@ const API_ENDPOINT = 'http://195.39.233.28:8035';
 
 let token;
 async function auth() {
-
   const response = await fetch(`${API_ENDPOINT}/auth`, {
     method: 'POST',
     headers: getAuthHeader(),
@@ -14,7 +13,6 @@ async function auth() {
   if (response.ok) {
     const json = await response.json();
     token = json.token;
-    console.trace('token', token);
   }
 }
 
@@ -37,14 +35,18 @@ async function query(url: string, parameters) {
   console.trace('query error');
 }
 
-export async function getPictures(page: number = 1): Array<any> {
+export async function getPictures(page: number = 1): any[] {
   await auth();
-  return query(`http://195.39.233.28:8035/images?page=${page}`, {
+  return query(`${API_ENDPOINT}/images?page=${page}`, {
     method: 'GET',
     headers: getAuthHeader(),
   });
 }
 
 export async function getPictureDetails(id: number): any {
-  // http://195.39.233.28:8035/images/id
+  await auth()
+  return query(`${API_ENDPOINT}/images/${id}`, {
+    method: 'GET',
+    headers: getAuthHeader(),
+  });
 }

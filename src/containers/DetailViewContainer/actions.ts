@@ -29,8 +29,18 @@ export function fetchPictureFailed(errorMessage: string): ActionWithPayload {
   };
 }
 
+
+export const SET_PICTURE_DETAILS = 'SET_PICTURE_DETAILS'
+
+const setPictureDetailsToStore = (pictureDetails) => ({
+  type: SET_PICTURE_DETAILS,
+  payload: { pictureDetails }
+})
+
 export function fetchPictureDetails(imageId: number) {
   return async dispatch => {
-    // TODO: implement me
+    // const response = await getPictureDetails(imageId);
+    // const pictureDetails = await response.json();
+    // dispatch(setPictureDetailsToStore(pictureDetails))
   };
 }

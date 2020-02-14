@@ -9,15 +9,16 @@ import {fetchPictures} from './actions';
 export interface Props {
   navigation: any;
   fetchPictures: Function;
-  pictures: Array<Object>;
+  pictures: Object[];
   isLoading: boolean;
+  page: number;
 }
 
 export interface State {}
 
 class HomeContainer extends React.Component<Props, State> {
   static navigationOptions = {
-    header: null,
+    headerShown: false,
   };
 
   constructor(props) {
@@ -32,8 +33,9 @@ class HomeContainer extends React.Component<Props, State> {
     this.onRefresh();
   }
 
-  onRefresh(): void {
-    this.props.fetchPictures(1);
+  async onRefresh(): void {
+    await this.props.fetchPictures(1);
+    console.trace('props', this.props.pictures)
   }
 
   onLoadNext(): void {

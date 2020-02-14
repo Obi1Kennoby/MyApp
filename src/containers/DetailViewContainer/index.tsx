@@ -17,16 +17,11 @@ export interface State {
 
 class DetailViewContainer extends React.Component<Props, State> {
   static navigationOptions = {
+    title: 'Details',
     headerStyle: {
-      backgroundColor: 'transparent',
-      position: 'absolute',
-      height: 50,
-      top: 0,
-      left: 0,
-      right: 0,
-      borderBottomWidth: 0,
+      backgroundColor: '#000',
     },
-    headerTintColor: '#FFF',
+    headerTintColor: '#fff',
   };
 
   componentDidMount() {

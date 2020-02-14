@@ -20,6 +20,7 @@ class HomeView extends React.PureComponent<Props> {
 
   constructor(props) {
     super(props);
+    console.trace('constructor');
     this._prepareStyles(); // create styles once to avoid object literals and use RN style optimization
     this._renderPicture = this._renderPicture.bind(this);
     this._openPicture = this._openPicture.bind(this);
@@ -57,12 +58,13 @@ class HomeView extends React.PureComponent<Props> {
 
   // TODO: it would be great to see here some loader and non-flickering layout
   render() {
+    console.trace('PROPS', this.props)
     const {isLoading, page, pictures, onLoadNext, onRefresh} = this.props;
     return (
       <View style={styles.page}>
         <FlatList
           removeClippedSubviews
-          refreshing={isLoading}
+          refreshing={isLoading || false}
           initialNumToRender={20}
           data={pictures}
           onRefresh={onRefresh}
