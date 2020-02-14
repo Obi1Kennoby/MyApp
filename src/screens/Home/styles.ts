@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native'
 
 const styles: any = StyleSheet.create({
   page: {
@@ -19,5 +19,5 @@ const styles: any = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 5,
   },
-});
-export default styles;
+})
+export default styles

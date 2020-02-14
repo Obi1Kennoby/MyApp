@@ -8,8 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "elint": "lint . --ext .js,.jsx,.ts,.tsx",
-    "lint": "tslint 'src/**/*.{ts,tsx}' --fix",
-    "tslint": "prettier 'src/**/*.{ts,tsx}' --write && tslint 'src/**/*.{ts,tsx}' --fix"
+    "lint": "prettier 'src/**/*.{ts,tsx}' --write && tslint 'src/**/*.{ts,tsx}' --fix"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
