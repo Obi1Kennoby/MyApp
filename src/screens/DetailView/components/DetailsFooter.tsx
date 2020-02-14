@@ -6,8 +6,8 @@ import shareImage from './images/ShareThis.png'
 import { PictureDetails } from '../../../containers/DetailViewContainer/reducer'
 
 type Props = {
-  shareCallback: Function
-  colorSwitchCallback: Function
+  shareCallback
+  colorSwitchCallback
   pictureDetails: PictureDetails
 }
 

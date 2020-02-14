@@ -15,6 +15,7 @@
     "jsx-boolean-value": false,
     "no-var-requires": false,
     "no-shadowed-variable": false,
-    "no-bitwise": false
+    "no-bitwise": false,
+    "jsx-no-lambda": false
   }
 }

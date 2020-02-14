@@ -8,15 +8,13 @@ import { fetchPictures } from './actions'
 
 export interface Props {
   navigation: any
-  fetchPictures: Function
-  pictures: Object[]
+  fetchPictures: (reset: boolean) => void
+  pictures: []
   isLoading: boolean
   page: number
 }
 
-export interface State {}
-
-class HomeContainer extends React.Component<Props, State> {
+class HomeContainer extends React.Component<Props, {}> {
   static navigationOptions = {
     headerShown: false,
   }

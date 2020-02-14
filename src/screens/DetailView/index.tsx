@@ -11,11 +11,9 @@ interface Props {
   pictureDetails: PictureDetails
 }
 
-// TODO: it would be great to see here loader, pinch to zoom here and pan
-
 class DetailView extends React.PureComponent<Props> {
   render() {
-    const { isLoading, shareCallback, applyFilterCallback, pictureDetails } = this.props
+    const { shareCallback, applyFilterCallback, pictureDetails } = this.props
     const imageUrl = pictureDetails.full_picture || pictureDetails.cropped_picture
 
     return (

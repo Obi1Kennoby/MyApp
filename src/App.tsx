@@ -14,7 +14,6 @@ import { createAppContainer } from 'react-navigation'
 import DetailView from './containers/DetailViewContainer/index'
 
 import Reactotron from 'reactotron-react-native'
-import { reactotronRedux } from 'reactotron-redux'
 
 if (__DEV__) {
   // tslint:disable-next-line
@@ -22,7 +21,6 @@ if (__DEV__) {
 
   Reactotron.configure() // controls connection & communication settings
     .useReactNative({}) // add all built-in react native plugins
-    .use(reactotronRedux())
     .connect() // let's connect!
 }
 

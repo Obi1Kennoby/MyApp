@@ -5,8 +5,8 @@ import styles from '../styles'
 type Props = {
   imageUrl: string
   imageId: number
-  openPicture: Function
-  imageStyle: Object
+  openPicture: (imageId) => void
+  imageStyle
 }
 
 class ListItem extends React.PureComponent<Props> {
